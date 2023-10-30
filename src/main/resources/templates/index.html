@@ -1,70 +1,76 @@
-<!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Festava Live - Bootstrap 5 CSS Template</title>
-  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-  <!-- CSS FILES -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;400;700&display=swap" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/bootstrap-icons.css" rel="stylesheet">
-  <link href="css/templatemo-festava-live.css" rel="stylesheet">
-</head>
-
-<body>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 <main>
-  <nav class="navbar navbar-expand-lg bg-dark">
-    <div class="container">
-      <a th:href="@{/member/login}">로그인</a>
-
-      <a href="ticket.html" class="btn custom-btn d-lg-none ms-auto me-4">Buy Ticket</a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="btn btn-dark" th:href="@{/member/login}">로그인</a>
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
           <li class="nav-item">
-            <a class="nav-link click-scroll" href="#section_1">Home</a>
+            <a class="btn btn-dark" th:href="@{/}">Home</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link click-scroll" href="#section_2">news</a>
-          </li>
+          <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    패션 정보
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="https://www.vogue.co.kr/fashion/fashion-news/">Vogue</a></li>
+                    <li><a class="dropdown-item" href="https://www.elle.co.kr/">ELLE</a></li>
+                    <li><a class="dropdown-item" href="https://www.doosanmagazine.com/brands/w">W</a></li>
+                  </ul>
+                </li>
+              </ul>
+
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    회원가입
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" th:href="@{/member/save}">회원 가입</a></li>
+                    <li><a class="dropdown-item" href="https://www.musinsa.com/app/">소셜 가입</a></li>
+                  </ul>
+                </li>
+              </ul>
+
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    shopping
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="https://www.musinsa.com/app/">무신사</a></li>
+                    <li><a class="dropdown-item" href="https://zigzag.kr/">지그재즈</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
 
           <li class="nav-item">
-            <a class="nav-link click-scroll" href="#section_3">shopping</a>
-          </li>
+            <a class="btn btn-dark" href="#section_5">review</a>
+          </li>&nbsp&nbsp&nbsp&nbsp
 
           <li class="nav-item">
-            <a th:href="@{/member/save}">회원가입</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link click-scroll" href="#section_5">review</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link click-scroll" href="#section_6">Q&A</a>
+            <a class="btn btn-dark" href="#section_6">Q&A</a>
           </li>
         </ul>
 
       </div>
     </div>
   </nav>
+<!-- nav -->
 
-
-  <section class="hero-section" id="section_1">
+  <section class="hero-section">
     <div class="section-overlay"></div>
 
     <div class="container d-flex justify-content-center align-items-center">
@@ -74,24 +80,25 @@
 
           <h1 class="text-white mb-5">오늘의 추천 Fashion!</h1>
 
-          <a class="btn custom-btn smoothscroll" href="#section_2">Fashion 추천!</a>
+          <a class="btn btn-outline-warning" href="#section_2">Fashion 추천!</a>
         </div>
         <!--날씨-->
-        <div class="col-lg-12 col-12 mt-auto d-flex flex-column flex-lg-row text-center">
-          <div th:style="'background-color: rgba(255, 255, 255, 0.3); padding: 40px; color: #fff; height: 220px'">
-            <div class="CurrIcon"></div>
-
-            <div style="float : right; margin : -5px 0px 0px 60px; font-size : 11pt">
-              <div class="CurrTemp"></div>
-              <div class="City"></div>
+        <div style="background-color: rgba(255, 255, 255, 0.3); padding: 40px; color: #fff; max-width: 600px; margin: 0 auto; height: 150px;">
+            <div style="float : left;">
+              <div class="CurrIcon"></div>
             </div>
-          </div>
-          <!-- 날씨 end-->
-          <div class="location-wrap mx-auto py-3 py-lg-0">
-            <h5 class="text-white" style="margin-top: 200px;">
-              <i class="custom-icon bi-geo-alt me-2"></i>
-              날씨 기준은 서울 및 경기 지역 입니다.
-            </h5>
+              <div style="float : right; margin : -5px 0px 0px 60px; font-size : 11pt">
+              <div class="temp_min"></div>
+              <div class="temp_max"></div>
+              <div class="humidity"></div>
+              <div class="wind"></div>
+              <div class="cloud"></div>
+            </div>
+            <div style="float : right; margin-top : -45px;">
+              <div class="temperature" style="font-size : 50pt"></div>
+              <div class="weather_description" style="font-size : 20pt"></div>
+              <div class="city" style="font-size : 13pt"></div>
+            </div>
           </div>
 
           <div class="social-share">
@@ -124,54 +131,9 @@
     <div class="video-wrap">
       <video autoplay="" loop="" muted="" class="custom-video" poster="">
         <source src="video/sun.mp4" type="video/mp4">
-
-        Your browser does not support the video tag.
       </video>
     </div>
   </section>
 </main>
-
-<footer class="site-footer">
-  <div class="site-footer-bottom">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-12 mt-5">
-          <p class="copyright-text">Copyright © 2023 today-weether</p>
-          <p class="copyright-text">Distributed by: <a href="https://themewagon.com">ThemeWagon</a></p>
-        </div>
-        <div class="col-lg-8 col-12 mt-lg-5">
-          <ul class="site-footer-links">
-            <li class="site-footer-link-item">
-              <a href="#" class="site-footer-link">Terms &amp; Conditions</a>
-            </li>
-
-            <li class="site-footer-link-item">
-              <a href="#" class="site-footer-link">Privacy Policy</a>
-            </li>
-
-            <li class="site-footer-link-item">
-              <a href="#" class="site-footer-link">Your Feedback</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-<!--
-
-T e m p l a t e M o
-
--->
-
-<!-- JAVASCRIPT FILES -->
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/jquery.sticky.js"></script>
-<script src="/js/click-scroll.js"></script>
-<script src="/js/custom.js"></script>
-<script src="/js/wearther.js"></script>
-
-
-</body>
+</th:block>
 </html>
