@@ -1,139 +1,159 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/default_layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout",
+      layout:decorate="layout/default_layout">
 <th:block layout:fragment="content">
-<main>
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-      <a class="btn btn-dark" th:href="@{/member/login}">로그인</a>
+    <main>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
-          <li class="nav-item">
-            <a class="btn btn-dark" th:href="@{/}">Home</a>
-          </li>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            로그인
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item"
+                                   th:href="@{/member/login}">회원 로그인</a></li>
+                            <li><a class="dropdown-item" href="#">네이버 로그인</a>
+                            <li><a class="dropdown-item" href="#">카카오 로그인</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
 
-          <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                  <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    패션 정보
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item" href="https://www.vogue.co.kr/fashion/fashion-news/">Vogue</a></li>
-                    <li><a class="dropdown-item" href="https://www.elle.co.kr/">ELLE</a></li>
-                    <li><a class="dropdown-item" href="https://www.doosanmagazine.com/brands/w">W</a></li>
-                  </ul>
-                </li>
-              </ul>
+                <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
+                    <li class="nav-item">
+                        <a class="btn btn-dark" th:href="@{/}">Home</a>
+                    </li>
 
-              <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                  <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    회원가입
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item" th:href="@{/member/save}">회원 가입</a></li>
-                    <li><a class="dropdown-item" href="https://www.musinsa.com/app/">소셜 가입</a></li>
-                  </ul>
-                </li>
-              </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                패션 정보
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item"
+                                       href="https://www.vogue.co.kr/fashion/fashion-news/">Vogue</a></li>
+                                <li><a class="dropdown-item" href="https://www.elle.co.kr/">ELLE</a></li>
+                                <li><a class="dropdown-item" href="https://www.doosanmagazine.com/brands/w">W</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
 
-              <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                  <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    shopping
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item" href="https://www.musinsa.com/app/">무신사</a></li>
-                    <li><a class="dropdown-item" href="https://zigzag.kr/">지그재즈</a></li>
-                  </ul>
-                </li>
-              </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                회원가입
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" th:href="@{/member/save}">회원 가입</a></li>
+                                <li><a class="dropdown-item" href="https://www.musinsa.com/app/">소셜 가입</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                shopping
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="https://www.musinsa.com/app/">무신사</a></li>
+                                <li><a class="dropdown-item" href="https://zigzag.kr/">지그재즈</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <li class="nav-item">
+                        <a class="btn btn-dark" href="#section_5">review</a>
+                    </li>
+                    &nbsp&nbsp&nbsp&nbsp
+
+                    <li class="nav-item">
+                        <a class="btn btn-dark" href="#section_6">Q&A</a>
+                    </li>
+                </ul>
+
             </div>
-          </div>
-
-          <li class="nav-item">
-            <a class="btn btn-dark" href="#section_5">review</a>
-          </li>&nbsp&nbsp&nbsp&nbsp
-
-          <li class="nav-item">
-            <a class="btn btn-dark" href="#section_6">Q&A</a>
-          </li>
-        </ul>
-
-      </div>
-    </div>
-  </nav>
-<!-- nav -->
-
-  <section class="hero-section">
-    <div class="section-overlay"></div>
-
-    <div class="container d-flex justify-content-center align-items-center">
-      <div class="row">
-
-        <div class="col-12 mt-auto mb-5 text-center">
-
-          <h1 class="text-white mb-5">오늘의 추천 Fashion!</h1>
-
-          <a class="btn btn-outline-warning" href="#section_2">Fashion 추천!</a>
-        </div>
-        <!--날씨-->
-        <div style="background-color: rgba(255, 255, 255, 0.3); padding: 40px; color: #fff; max-width: 600px; margin: 0 auto; height: 150px;">
-            <div style="float : left;">
-              <div class="CurrIcon"></div>
             </div>
-              <div style="float : right; margin : -5px 0px 0px 60px; font-size : 11pt">
-              <div class="temp_min"></div>
-              <div class="temp_max"></div>
-              <div class="humidity"></div>
-              <div class="wind"></div>
-              <div class="cloud"></div>
+        </nav>
+        <!-- nav -->
+
+        <section class="hero-section">
+            <div class="section-overlay"></div>
+
+            <div class="container d-flex justify-content-center align-items-center">
+                <div class="row">
+
+                    <div class="col-12 mt-auto mb-5 text-center">
+
+                        <h1 class="text-white mb-5">오늘의 추천 Fashion!</h1>
+
+                        <a class="btn btn-outline-warning" href="#section_2">Fashion 추천!</a>
+                    </div>
+                    <!--날씨-->
+                    <div style="background-color: rgba(255, 255, 255, 0.3); padding: 40px; color: #fff; max-width: 600px; margin: 0 auto; height: 150px;">
+                        <div style="float : left;">
+                            <div class="CurrIcon"></div>
+                        </div>
+                        <div style="float : right; margin : -5px 0px 0px 60px; font-size : 11pt">
+                            <div class="temp_min"></div>
+                            <div class="temp_max"></div>
+                            <div class="humidity"></div>
+                            <div class="wind"></div>
+                            <div class="cloud"></div>
+                        </div>
+                        <div style="float : right; margin-top : -45px;">
+                            <div class="temperature" style="font-size : 50pt"></div>
+                            <div class="weather_description" style="font-size : 20pt"></div>
+                            <div class="city" style="font-size : 13pt"></div>
+                        </div>
+                    </div>
+
+                    <div class="social-share">
+                        <ul class="social-icon d-flex align-items-center justify-content-center">
+                            <span class="text-white me-3" style="margin-top: 200px;">Share:</span>
+
+                            <li class="social-icon-item" style="margin-top: 200px;">
+                                <a href="https://www.facebook.com/?locale=ko_KR" class="social-icon-link">
+                                    <span class="bi-facebook"></span>
+                                </a>
+                            </li>
+
+                            <li class="social-icon-item" style="margin-top: 200px;">
+                                <a href="https://twitter.com/?lang=ko" class="social-icon-link">
+                                    <span class="bi-twitter"></span>
+                                </a>
+                            </li>
+
+                            <li class="social-icon-item" style="margin-top: 200px;">
+                                <a href="https://www.instagram.com/" class="social-icon-link">
+                                    <span class="bi-instagram"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div style="float : right; margin-top : -45px;">
-              <div class="temperature" style="font-size : 50pt"></div>
-              <div class="weather_description" style="font-size : 20pt"></div>
-              <div class="city" style="font-size : 13pt"></div>
             </div>
-          </div>
 
-          <div class="social-share">
-            <ul class="social-icon d-flex align-items-center justify-content-center">
-              <span class="text-white me-3" style="margin-top: 200px;">Share:</span>
-
-              <li class="social-icon-item" style="margin-top: 200px;">
-                <a href="https://www.facebook.com/?locale=ko_KR" class="social-icon-link">
-                  <span class="bi-facebook"></span>
-                </a>
-              </li>
-
-              <li class="social-icon-item" style="margin-top: 200px;">
-                <a href="https://twitter.com/?lang=ko" class="social-icon-link">
-                  <span class="bi-twitter"></span>
-                </a>
-              </li>
-
-              <li class="social-icon-item" style="margin-top: 200px;">
-                <a href="https://www.instagram.com/" class="social-icon-link">
-                  <span class="bi-instagram"></span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="video-wrap">
-      <video autoplay="" loop="" muted="" class="custom-video" poster="">
-        <source src="video/sun.mp4" type="video/mp4">
-      </video>
-    </div>
-  </section>
-</main>
+            <div class="video-wrap">
+                <video autoplay="" loop="" muted="" class="custom-video" poster="">
+                    <source src="video/sun.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+    </main>
 </th:block>
 </html>
