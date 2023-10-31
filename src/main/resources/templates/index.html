@@ -20,8 +20,10 @@
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item"
                                    th:href="@{/member/login}">회원 로그인</a></li>
-                            <li><a class="dropdown-item" href="#">네이버 로그인</a>
-                            <li><a class="dropdown-item" href="#">카카오 로그인</a>
+                            <li><a class="dropdown-item" th:href="@{/login/google}">구글 로그인</a>
+                            <li><a class="dropdown-item" th:href="@{/login/naver}">네이버 로그인</a>
+                            <li><a class="dropdown-item" th:href="@{/login}">통합로그인</a>
+                            <li><a class="dropdown-item" th:href="@{/user}">로그인완료</a>
                             </li>
                         </ul>
                     </li>
