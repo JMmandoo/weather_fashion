@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="btn btn-dark" th:href="@{/member/login}">로그인</a>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
+                    <li class="nav-item">
+                        <a class="btn btn-dark" th:href="@{/}">Home</a>
+                    </li>
+
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                        패션 정보
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-dark">
+                                        <li><a class="dropdown-item"
+                                               href="https://www.vogue.co.kr/fashion/fashion-news/">Vogue</a></li>
+                                        <li><a class="dropdown-item" href="https://www.elle.co.kr/">ELLE</a></li>
+                                        <li><a class="dropdown-item"
+                                               href="https://www.doosanmagazine.com/brands/w">W</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                        회원가입
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-dark">
+                                        <li><a class="dropdown-item" th:href="@{/member/save}">회원 가입</a></li>
+                                        <li><a class="dropdown-item" href="https://www.musinsa.com/app/">소셜 가입</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                        shopping
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-dark">
+                                        <li><a class="dropdown-item" href="https://www.musinsa.com/app/">무신사</a></li>
+                                        <li><a class="dropdown-item" href="https://zigzag.kr/">지그재즈</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <li class="nav-item">
+                        <a class="btn btn-dark" href="#section_5">review</a>
+                    </li>
+                    &nbsp&nbsp&nbsp&nbsp
+
+                    <li class="nav-item">
+                        <a class="btn btn-dark" href="#section_6">Q&A</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    session 값 확인: <p th:text="${session.loginEmail}"></p>
+    <a href="/user/member/update">내 정보 수정하기</a>
+    <a href="/user/member/logout">로그아웃</a>
+</th:block>
+</html>

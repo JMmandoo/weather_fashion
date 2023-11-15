@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" ,
       layout:decorate="layout/default_layout">
 <th:block layout:fragment="content">
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
@@ -76,23 +76,93 @@
             </div>
         </div>
     </nav>
+    <!-- nav bar -->
+    <!-- jquery cdn -->
+
+    <!--    <body class="text-center">-->
+    <!--     action속성: form에 작성한 데이터를 어디로 보낼지 지정-->
+    <!--    <form action="/user/member/save" method="post">-->
+    <!--        &lt;!&ndash; name속성: 서버로 전송할 때 변수이름의 역할 &ndash;&gt;-->
+    <!--        이메일: <input type="text" name="memberEmail" id="memberEmail" onblur="emailCheck()"> <br>-->
+    <!--        <p id="check-result"></p>-->
+    <!--        비밀번호: <input type="password" name="memberPassword"> <br>-->
+    <!--        이름: <input type="text" name="memberName"> <br>-->
+    <!--        <input type="submit" value="회원가입">-->
+    <!--    </form>-->
 
 
-    <form action="/member/login" method="post">
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">이메일</label>
-            <input type="text" name="memberEmail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">회원가입시 입력했던 이메일을 적어주세요</div>
+        <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog"
+             id="modalSignin">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content rounded-4 shadow">
+                    <div class="modal-header p-5 pb-4 border-bottom-0">
+                        <h1 class="fw-bold mb-0 fs-2">Sign up for free</h1>
+                    </div>
+
+                    <div class="modal-body p-5 pt-0" >
+                        <form action="/user/member/save" method="post">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control rounded-3" id="memberEmail" name="memberEmail"
+                                       placeholder="Email" onblur="emailCheck()">
+                                <label for="memberEmail">Email address</label>
+                                <p id="check-result"></p>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control rounded-3" id="memberPassword" name="memberPassword"
+                                       placeholder="Password">
+                                <label for="memberPassword">Password</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control rounded-3" id="memberName" name="memberName"
+                                       placeholder="이름">
+                                <label for="memberName">이름</label>
+                            </div>
+                            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">회원 가입</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">비밀번호</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="memberPassword">
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">로그인</button>
-    </form>
+
+    <script th:inline="javascript">
+        const emailCheck = () => {
+            const email = document.getElementById("memberEmail").value;
+            const checkResult = document.getElementById("check-result");
+            console.log("입력값: ", email);
+            $.ajax({
+                // 요청방식: post, url: "email-check", 데이터: 이메일
+                type: "post",
+                url: "/user/member/email-check",
+                data: {
+                    "memberEmail": email
+                },
+                success: function (res) {
+                    console.log("요청성공", res);
+                    if (res == "ok") {
+                        console.log("사용가능한 이메일");
+                        checkResult.style.color = "green";
+                        checkResult.innerHTML = "사용가능한 이메일";
+                    } else {
+                        console.log("이미 사용중인 이메일");
+                        checkResult.style.color = "red";
+                        checkResult.innerHTML = "이미 사용중인 이메일";
+                    }
+                },
+                error: function (err) {
+                    console.log("에러발생", err);
+                }
+            });
+        }
+    </script>
 </th:block>
 </html>
+
+
+
+
+
+
+
+
+
+

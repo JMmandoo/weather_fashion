@@ -76,8 +76,50 @@
             </div>
         </div>
     </nav>
-    session 값 확인: <p th:text="${session.loginEmail}"></p>
-    <a href="/member/update">내 정보 수정하기</a>
-    <a href="/member/logout">로그아웃</a>
+    <!-- nav bar -->
+<!--    <div class="container">-->
+<!--        <form action="/member/login" method="post">-->
+<!--            <div class="mb-3">-->
+<!--                <label for="exampleInputEmail1" class="form-label">이메일</label>-->
+<!--                <input type="text" name="memberEmail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="exampleInputPassword1" class="form-label">비밀번호</label>-->
+<!--                <input type="password" class="form-control" id="exampleInputPassword1" name="memberPassword">-->
+<!--            </div>-->
+<!--            <button class="btn btn-primary" type="submit">로그인</button>-->
+<!--        </form>-->
+<!--    </div>-->
+
+
+    <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog"
+         id="modalSignin">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content rounded-4 shadow">
+                <div class="modal-header p-5 pb-4 border-bottom-0">
+                    <h1 class="fw-bold mb-0 fs-2">Login</h1>
+                </div>
+
+                <div class="modal-body p-5 pt-0" >
+                    <form action="/member/login" method="post">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control rounded-3" id="exampleInputEmail1" name="memberEmail"
+                                   placeholder="Email" onblur="emailCheck()">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <p id="check-result"></p>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control rounded-3" id="exampleInputPassword1" name="memberPassword"
+                                   placeholder="Password">
+                            <label for="exampleInputPassword1">Password</label>
+                        </div>
+                        <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">로그인</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </th:block>
 </html>
