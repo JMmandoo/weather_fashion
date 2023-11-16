@@ -1,8 +1,8 @@
-package com.min.fashion.service;
+package com.min.fashion.member.service;
 
-import com.min.fashion.dto.MemberDTO;
-import com.min.fashion.entity.MemberEntity;
-import com.min.fashion.repository.MemberRepository;
+import com.min.fashion.member.dto.MemberDTO;
+import com.min.fashion.member.entity.MemberEntity;
+import com.min.fashion.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package com.min.fashion.entity;
+package com.min.fashion.member.entity;
 
-import com.min.fashion.dto.MemberDTO;
+import com.min.fashion.member.dto.MemberDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

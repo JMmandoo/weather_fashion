@@ -1,6 +1,6 @@
-package com.min.fashion.dto;
+package com.min.fashion.member.dto;
 
-import com.min.fashion.entity.MemberEntity;
+import com.min.fashion.member.entity.MemberEntity;
 import lombok.*;
 
 @Getter

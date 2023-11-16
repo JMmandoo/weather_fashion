@@ -1,4 +1,4 @@
-package com.min.fashion.controller;
+package com.min.fashion.member.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;

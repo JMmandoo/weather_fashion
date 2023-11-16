@@ -1,8 +1,8 @@
-package com.min.fashion.controller;
+package com.min.fashion.member.controller;
 
 
-import com.min.fashion.dto.MemberDTO;
-import com.min.fashion.service.MemberService;
+import com.min.fashion.member.dto.MemberDTO;
+import com.min.fashion.member.service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

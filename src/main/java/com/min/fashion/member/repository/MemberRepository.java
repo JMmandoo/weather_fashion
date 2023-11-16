@@ -1,6 +1,6 @@
-package com.min.fashion.repository;
+package com.min.fashion.member.repository;
 
-import com.min.fashion.entity.MemberEntity;
+import com.min.fashion.member.entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
