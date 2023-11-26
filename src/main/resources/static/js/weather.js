@@ -45,7 +45,36 @@ $(document).ready(function () {
                     videoElement.src = 'video/mist.mp4';
                     break;
             }
-        }
+                    // 옷차림 추천 함수 호출
+                    recommendClothes(data);
+            }
+
     });
 });
+
+// 옷차림 추천 함수
+function recommendClothes(data) {
+    let clothesRecommendation = document.querySelector('.clothing-recommendation');
+    let temp = data.main.temp;
+
+    if (temp <= 4) {
+        clothesRecommendation.innerHTML = "패딩, 두꺼운 코트, 목도리, 기모의류를 추천합니다.";
+    } else if (temp >= 5 && temp < 9) {
+        clothesRecommendation.innerHTML = "코트, 가죽자켓, 발열내의, 니트, 레깅스를 추천합니다.";
+    } else if (temp >= 9 && temp < 12) {
+        clothesRecommendation.innerHTML = "자켓, 트렌치코트, 야상, 니트, 청바지, 스타킹을 추천합니다.";
+    } else if (temp >= 12 && temp < 17) {
+        clothesRecommendation.innerHTML = "얇은 니트, 맨투맨, 가디건, 청바지를 추천합니다.";
+    } else if (temp >= 17 && temp < 20) {
+        clothesRecommendation.innerHTML = "얇은 가디건, 긴팔, 면바지, 청바지를 추천합니다.";
+    } else if (temp >= 20 && temp < 23) {
+        clothesRecommendation.innerHTML = "얇은 가디건, 얇은 셔츠, 반바지, 면바지를 추천합니다.";
+    } else if (temp >= 23 && temp < 28) {
+        clothesRecommendation.innerHTML = "반팔, 얇은 셔츠, 반바지, 면바지를 추천합니다.";
+    } else if (temp >= 28) {
+        clothesRecommendation.innerHTML = "민소매, 반팔, 반바지, 면바지, 원피스를 추천합니다.";
+    } else {
+        console.error(new Error(`${temp}, 옷 정보를 불러오지 못함.`));
+    }
+}
 

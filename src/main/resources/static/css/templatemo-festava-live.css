@@ -1,316 +1,12 @@
 /*---------------------------------------
-  CUSTOM PROPERTIES ( VARIABLES )             
+ HEADER TITLE
 -----------------------------------------*/
-:root {
-  --white-color:                  #ffffff;
-  --secondary-color:              #EE5007;
-
-
-  --h1-font-size:                 74px;
-  --h2-font-size:                 46px;
-  --h3-font-size:                 32px;
-  --h4-font-size:                 28px;
-  --h5-font-size:                 24px;
-  --h6-font-size:                 22px;
-  --p-font-size:                  18px;
-  --btn-font-size:                14px;
-  --copyright-font-size:          16px;
-
-  --border-radius-large:          100px;
-  --border-radius-medium:         20px;
-  --border-radius-small:          10px;
-
-  --font-weight-light:            300;
-  --font-weight-normal:           400;
-  --font-weight-bold:             700;
+.nav-item.nav-link {
+  font-size: 1em; /* 원하는 크기로 조정하세요 */
 }
-
 
 /*---------------------------------------
-  TYPOGRAPHY               
------------------------------------------*/
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: var(--font-weight-bold);
-}
-
-h1 {
-  font-size: var(--h1-font-size);
-}
-
-h2 {
-  font-size: var(--h2-font-size);
-}
-
-h3 {
-  font-size: var(--h3-font-size);
-}
-
-h4 {
-  font-size: var(--h4-font-size);
-}
-
-h5 {
-  font-size: var(--h5-font-size);
-}
-
-h6 {
-  font-size: var(--h6-font-size);
-}
-
-
-
-b,
-strong {
-  font-weight: var(--font-weight-bold);
-}
-
-.link-fx-1 {
-  color: var(--white-color);
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  height: 32px;
-  padding: 0 6px;
-  text-decoration: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-
-.link-fx-1:hover::before {
-  transform: translateX(17px) scaleX(0);
-  transition: transform .2s;
-}
-
-.link-fx-1:hover .icon circle {
-  stroke-dashoffset: 200;
-  transition: stroke-dashoffset .2s .1s;
-}
-
-.link-fx-1:hover .icon line {
-  transform: rotate(-180deg);
-}
-
-.link-fx-1:hover .icon line:last-child {
-  transform: rotate(180deg);
-}
-
-.link-fx-1::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: currentColor;
-  transform-origin: right center;
-  transition: transform .2s .1s;
-}
-
-.link-fx-1 .icon {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  transform: translateX(100%) rotate(90deg);
-  font-size: 32px;
-}
-
-.icon {
-  --size: 1em;
-  height: var(--size);
-  width: var(--size);
-  display: inline-block;
-  color: inherit;
-  fill: currentColor;
-  line-height: 1;
-  flex-shrink: 0;
-  max-width: initial;
-}
-
-.link-fx-1 .icon circle {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  transition: stroke-dashoffset .2s;
-}
-
-.link-fx-1 .icon line {
-  transition: transform .4s;
-  transform-origin: 13px 15px;
-}
-
-.link-fx-1 .icon line:last-child {
-  transform-origin: 19px 15px;
-}
-
-
-/*---------------------------------------
-  HEADER
------------------------------------------*/
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-}
-
-.b-example-divider {
-  width: 100%;
-  height: 3rem;
-  background-color: rgba(0, 0, 0, .1);
-  border: solid rgba(0, 0, 0, .15);
-  border-width: 1px 0;
-  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-}
-
-.b-example-vr {
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 100vh;
-}
-
-.bi {
-  vertical-align: -.125em;
-  fill: currentColor;
-}
-
-.nav-scroller {
-  position: relative;
-  z-index: 2;
-  height: 2.75rem;
-  overflow-y: hidden;
-}
-
-.nav-scroller .nav {
-  display: flex;
-  flex-wrap: nowrap;
-  padding-bottom: 1rem;
-  margin-top: -1px;
-  overflow-x: auto;
-  text-align: center;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
-
-.btn-bd-primary {
-  --bd-violet-bg: #712cf9;
-  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-  --bs-btn-font-weight: 600;
-
-  --bs-btn-bg: var(--bd-violet-bg);
-  --bs-btn-border-color: var(--bd-violet-bg);
-
-  --bs-btn-hover-bg: #6528e0;
-  --bs-btn-hover-border-color: #6528e0;
-  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-
-  --bs-btn-active-bg: #5a23c8;
-  --bs-btn-active-border-color: #5a23c8;
-}
-.bd-mode-toggle {
-  z-index: 1500;
-}
-/*---------------------------------------
-  CUSTOM ICON COLOR
------------------------------------------*/
-
-/*---------------------------------------
-  CUSTOM BUTTON
------------------------------------------*/
-
-/*---------------------------------------
-  VIDEO
------------------------------------------*/
-.video-wrap {
-  z-index: -100;
-}
-
-.custom-video {
-  width: 100%; /* 비디오 너비를 부모 요소에 맞게 설정 */
-  height: 100%; /* 비디오 높이를 부모 요소에 맞게 설정 */
-  object-fit: cover; /* 부모 요소에 맞게 비디오의 가로세로 비율을 유지하며 조절 */
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-/*---------------------------------------
-  SITE HEADER              
------------------------------------------*/
-/*---------------------------------------
-  NAVIGATION              
------------------------------------------*/
-/*---------------------------------------
-  HERO        
------------------------------------------*/
-.hero-section {
-  position: relative;
-  overflow: hidden;
-  padding-top: 100px;
-  height: calc(100vh - 51px);
-}
-
-.hero-section small {
-  color: var(--white-color);
-  text-transform: uppercase;
-}
-
-.hero-section .section-overlay {
-  z-index: 2;
-  opacity: 0.45;
-}
-
-.hero-section .container {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  padding-bottom: 50px;
-}
-
-.hero-section .container .row {
-  height: 100%;
-}
-
-
-/*---------------------------------------
-  ABOUT              
------------------------------------------*/
-/*---------------------------------------
-  TICKET               
------------------------------------------*/
-/*---------------------------------------
-  ARTISTS              
------------------------------------------*/
-/*---------------------------------------
-  SCHEDULE              
------------------------------------------*/
-/*---------------------------------------
-  PRICING              
------------------------------------------*/
-/*---------------------------------------
-  CONTACT               
------------------------------------------*/
-/*---------------------------------------
-  CUSTOM FORM               
------------------------------------------*/
-/*---------------------------------------
-  SITE FOOTER              
------------------------------------------*/
-
-/*---------------------------------------
-  SOCIAL ICON               
+  SOCIAL ICON
 -----------------------------------------*/
 .social-icon {
   margin: 0;
@@ -324,10 +20,8 @@ strong {
 }
 
 .social-icon-link {
-  background: var(--secondary-color);
-  border-radius: var(--border-radius-large);
-  color: var(--white-color);
-  font-size: var(--copyright-font-size);
+  color: black;
+  font-size: 30px;
   display: block;
   margin-right: 10px;
   text-align: center;
@@ -338,8 +32,7 @@ strong {
 }
 
 .social-icon-link:hover {
-  background: var(--primary-color);
-  color: var(--white-color);
+  color: orange;
 }
 
 .social-icon-link span {
@@ -361,3 +54,67 @@ strong {
 /*---------------------------------------
   Login
 -----------------------------------------*/
+
+/*---------------------------------------
+  weather
+-----------------------------------------*/
+.custom-video {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.weather-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.weather-overlay {
+  position: absolute;
+  top: -350px;
+  right: -600px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 40px;
+  color: black;
+  max-width: 600px;
+  height: 280px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.weather-overlay .CurrIcon {
+  margin-top: 50px;
+  float: left;
+}
+
+.weather-overlay .temp-info {
+  float: right;
+  margin: -5px 0px 0px 60px;
+  font-size: 20pt;
+}
+
+.weather-overlay .additional-info {
+  float: right;
+  margin-top: -45px;
+}
+
+.weather-overlay .temperature {
+  margin-top: 70px;
+  font-size: 50pt;
+}
+
+.weather-overlay .weather_description {
+  margin-top: 10px;
+  font-size: 20pt;
+}
+
+.weather-overlay .city {
+  font-size: 13pt;
+}
+
+.row {
+  position: relative;
+}
+
+
