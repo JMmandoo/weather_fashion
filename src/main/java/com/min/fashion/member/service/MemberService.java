@@ -3,6 +3,7 @@ package com.min.fashion.member.service;
 import com.min.fashion.member.dto.MemberDTO;
 import com.min.fashion.member.entity.MemberEntity;
 import com.min.fashion.member.repository.MemberRepository;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class MemberService {
     // repository의 save메서드 호출 (조건. entity객체를 넘겨줘야 함)
   }
 
-  public MemberDTO login(MemberDTO memberDTO) {
+  public MemberDTO login(MemberDTO memberDTO, HttpSession session) {
         /*
             1. 회원이 입력한 이메일로 DB에서 조회를 함
             2. DB에서 조회한 비밀번호와 사용자가 입력한 비밀번호가 일치하는지 판단
@@ -33,7 +34,10 @@ public class MemberService {
       if (memberEntity.getMemberPassword().equals(memberDTO.getMemberPassword())) {
         // 비밀번호 일치
         // entity -> dto 변환 후 리턴
+        // 로그인 성공
         MemberDTO dto = MemberDTO.toMemberDTO(memberEntity);
+        // 세션에 사용자 정보 저장
+        session.setAttribute("memberInfo", dto);
         return dto;
       } else {
         // 비밀번호 불일치(로그인실패)

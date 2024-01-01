@@ -39,7 +39,7 @@ public class MemberController {
 
   @PostMapping("/member/login")
   public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
-    MemberDTO loginResult = memberService.login(memberDTO);
+    MemberDTO loginResult = memberService.login(memberDTO, session);
     if (loginResult != null) {
       // login 성공
       session.setAttribute("loginEmail", loginResult.getMemberEmail());
@@ -88,7 +88,7 @@ public class MemberController {
   @GetMapping("/user/member/logout")
   public String logout(HttpSession session) {
     session.invalidate();
-    return "index";
+    return "user/login";
   }
 
   @PostMapping("/user/member/email-check")
