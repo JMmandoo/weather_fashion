@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Room</title>
+  <!-- jQuery CDN -->
+  <script src="/js/jquery.min.js"></script>
+  <!-- SockJS CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+  <!-- Stomp.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+  <script>
+    let stompClient = null;
+    let memberEmail; // 로그인한 사용자의 ID를 여기에 저장합니다.
+
+    function connect() {
+      let socket = new SockJS('/ws');
+      stompClient = Stomp.over(socket);
+      stompClient.connect({}, function (frame) {
+        stompClient.subscribe('/topic/public', function (message) {
+          showMessage(JSON.parse(message.body));
+        });
+      });
+    }
+
+    function sendMessage() {
+      let messageContent = $("#messageInput").val();
+      if(messageContent && stompClient) {
+        stompClient.send("/app/chat.sendMessage", {}, JSON.stringify({'content': messageContent}));
+        $("#messageInput").val('');
+      }
+    }
+
+
+    function showMessage(message) {
+      let messagesTable = $("#messages");
+      messagesTable.append("<tr><td><b>User " + message.id + ":</b> " + message.content + "</td></tr>");
+      messagesTable.scrollTop(messagesTable.prop("scrollHeight"));
+    }
+
+    $(function () {
+      $("form").on('submit', function (e) {
+        e.preventDefault();
+        sendMessage();
+      });
+      $( "#send" ).click(function() { sendMessage(); });
+    });
+
+    connect();
+  </script>
+
+</head>
+<body>
+<form>
+  <div>
+    <input id="messageInput" autocomplete="off"/>
+    <button id="send">Send</button>
+  </div>
+</form>
+<div style="overflow-y: scroll; height: 300px;">
+  <table id="messages"></table>
+</div>
+</body>
+</html>

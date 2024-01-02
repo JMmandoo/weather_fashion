@@ -38,11 +38,12 @@ public class MemberController {
   }
 
   @PostMapping("/member/login")
-  public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
+  public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
     MemberDTO loginResult = memberService.login(memberDTO, session);
     if (loginResult != null) {
       // login 성공
       session.setAttribute("loginEmail", loginResult.getMemberEmail());
+      session.setAttribute("userId", loginResult.getId());  // 여기에 사용자 ID를 세션에 추가
       return "user/main";
     } else {
       // login 실패
