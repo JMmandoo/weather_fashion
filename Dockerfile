@@ -1,9 +1,16 @@
-FROM openjdk:17-jdk
+# Dockerfile
 
-WORKDIR /app
+# jdk17 Image Start
+FROM openjdk:17
 
-COPY build/libs/fashion-0.0.1-SNAPSHOT.jar /app/fashion.jar
-COPY entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
+# 인자 설정 - JAR_File
+ARG JAR_FILE=build/libs/*.jar
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+# jar 파일 복제
+COPY ${JAR_FILE} app.jar
+
+# 인자 설정 부분과 jar 파일 복제 부분 합쳐서 진행해도 무방
+#COPY build/libs/*.jar app.jar
+
+# 실행 명령어
+ENTRYPOINT ["java", "-jar", "app.jar"]
