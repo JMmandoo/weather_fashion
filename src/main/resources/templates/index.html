@@ -15,8 +15,7 @@
                         </a>
                     </div>
                     <div class="col-4 d-flex justify-content-end align-items-center">
-                        <a class="btn btn-sm btn-outline-secondary" th:if="${session.loginEmail == null}" th:href="@{/user/member/login}">login</a>
-                        <a class="btn btn-sm btn-outline-secondary" th:if="${session.loginEmail != null}" th:href="@{/user/member/logout}">logout</a>
+                        <a class="btn btn-sm btn-outline-secondary" th:href="@{/login}">login</a>
                     </div>
                 </div>
             </div>

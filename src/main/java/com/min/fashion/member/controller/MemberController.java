@@ -5,6 +5,8 @@ import com.min.fashion.member.dto.MemberDTO;
 import com.min.fashion.member.service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,96 +14,70 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/api/members")
 @RequiredArgsConstructor
 public class MemberController {
-  // 생성자 주입
   private final MemberService memberService;
 
-  // 회원가입 페이지 출력 요청
-  @GetMapping("/user/member/save")
-  public String saveForm() {
-    return "user/save";
-  }
-
-  @PostMapping("/user/member/save")
-  public String save(@ModelAttribute MemberDTO memberDTO) {
-    System.out.println("MemberController.save");
-    System.out.println("memberDTO = " + memberDTO);
+  @PostMapping("/register")
+  public ResponseEntity<MemberDTO> register(@RequestBody MemberDTO memberDTO) {
     memberService.save(memberDTO);
-    return "user/login";
+    return new ResponseEntity<>(memberDTO, HttpStatus.CREATED);
   }
 
-  @GetMapping("/user/member/login")
-  public String loginForm() {
-    return "user/login";
-  }
-
-  @PostMapping("/member/login")
-  public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
-    MemberDTO loginResult = memberService.login(memberDTO, session);
+  @PostMapping("/login")
+  public ResponseEntity<MemberDTO> login(@RequestBody MemberDTO memberDTO) {
+    MemberDTO loginResult = memberService.login(memberDTO);
     if (loginResult != null) {
-      // login 성공
-      session.setAttribute("loginEmail", loginResult.getMemberEmail());
-      session.setAttribute("userId", loginResult.getId());  // 여기에 사용자 ID를 세션에 추가
-      return "user/main";
+      return ResponseEntity.ok(loginResult);
     } else {
-      // login 실패
-      return "user/login";
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
   }
 
-  @GetMapping("/user/member/")
-  public String findAll(Model model) {
-    List<MemberDTO> memberDTOList = memberService.findAll();
-    // 어떠한 html로 가져갈 데이터가 있다면 model사용
-    model.addAttribute("memberList", memberDTOList);
-    return "user/list";
+  @GetMapping
+  public ResponseEntity<List<MemberDTO>> findAll() {
+    List<MemberDTO> members = memberService.findAll();
+    return ResponseEntity.ok(members);
   }
 
-  @GetMapping("/user/member/{id}")
-  public String findById(@PathVariable Long id, Model model) {
-    MemberDTO memberDTO = memberService.findById(id);
-    model.addAttribute("member", memberDTO);
-    return "user/detail";
+  @GetMapping("/{id}")
+  public ResponseEntity<MemberDTO> findById(@PathVariable Long id) {
+    MemberDTO member = memberService.findById(id);
+    if (member != null) {
+      return ResponseEntity.ok(member);
+    } else {
+      return ResponseEntity.notFound().build();
+    }
   }
 
-  @GetMapping("/user/member/update")
-  public String updateForm(HttpSession session, Model model) {
-    String myEmail = (String) session.getAttribute("loginEmail");
-    MemberDTO memberDTO = memberService.updateForm(myEmail);
-    model.addAttribute("updateMember", memberDTO);
-    return "user/update";
+  @PutMapping("/{id}")
+  public ResponseEntity<MemberDTO> update(@PathVariable Long id, @RequestBody MemberDTO memberDTO) {
+    memberService.update(id, memberDTO);
+    MemberDTO updatedMember = memberService.findById(id);
+    if (updatedMember != null) {
+      return ResponseEntity.ok(updatedMember);
+    } else {
+      return ResponseEntity.notFound().build();
+    }
   }
 
-  @PostMapping("/user/member/update")
-  public String update(@ModelAttribute MemberDTO memberDTO) {
-    memberService.update(memberDTO);
-    return "redirect:/user/member/" + memberDTO.getId();
-  }
-
-  @GetMapping("/user/member/delete/{id}")
-  public String deleteById(@PathVariable Long id) {
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deleteById(@PathVariable Long id) {
     memberService.deleteById(id);
-    return "redirect:/user/member/";
+    return ResponseEntity.ok().build();
   }
 
-  @GetMapping("/user/member/logout")
-  public String logout(HttpSession session) {
-    session.invalidate();
-    return "user/login";
+  @PostMapping("/logout")
+  public ResponseEntity<Void> logout() {
+    // 토큰 기반 인증 시스템에서는 클라이언트 측에서 토큰을 삭제해야 합니다.
+    return ResponseEntity.ok().build();
   }
 
-  @PostMapping("/user/member/email-check")
-  public @ResponseBody String emailCheck(@RequestParam("memberEmail") String memberEmail) {
-    System.out.println("memberEmail = " + memberEmail);
-    String checkResult = memberService.emailCheck(memberEmail);
-    return checkResult;
-//        if (checkResult != null) {
-//            return "ok";
-//        } else {
-//            return "no";
-//        }
+  @PostMapping("/email-check")
+  public ResponseEntity<String> emailCheck(@RequestParam("memberEmail") String memberEmail) {
+    boolean isEmailAvailable = memberService.emailCheck(memberEmail);
+    return ResponseEntity.ok(isEmailAvailable ? "Available" : "Not Available");
   }
-
 }
